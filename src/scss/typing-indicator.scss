@@ -1,0 +1,45 @@
+@keyframes:local(blink) {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes:local(bulge) {
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+:local {
+  .typing-indicator {
+    $ti-color-bg: #E6E7ED;
+
+    background-color: $ti-color-bg;
+    will-change: transform;
+    width: auto;
+    border-radius: 25px;
+    padding: 8px 10px;
+    display: table;
+    position: relative;
+    animation: 2s infinite ease-out;
+    animation-name: bulge;
+
+    span {
+      height: 8px;
+      width: 8px;
+      float: left;
+      margin: 0 1px;
+      background-color: #9E9EA1;
+      display: block;
+      border-radius: 50%;
+      opacity: 0.4;
+
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+          animation: 1s infinite ($i * .3333s);
+          animation-name: blink;
+        }
+      }
+    }
+  }
+}

@@ -42,7 +42,7 @@ module.exports = function () {
         {
             loader: 'css-loader',
             options: {
-                modules: true,
+                modules: false,
                 localIdentName: '[local]--[hash:base64:5]',
                 minimize: isProd,
                 sourceMap: isLocal,
@@ -138,13 +138,13 @@ module.exports = function () {
                 {
                     test: /\.svg$/,
                     use: {
-                        loader: 'svg-url-loader',
+                        loader: 'react-svg-loader',
                         options: {
-                            stripdeclarations: true,
-                            iesafe: true,
-                            //limit: 1024,
-                            noquotes: true,
-                            name: '[path][name].[hash].[ext]',
+                            svgo: {
+                                plugins: [
+                                    {removeTitle: true},
+                                ],
+                            },
                         },
                     },
                 },
