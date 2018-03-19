@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './dist');
@@ -14,10 +13,10 @@ module.exports = function () {
     const isProd = !isLocal;
 
     const plugins = [
-        new webpack.ProvidePlugin({
+        /*new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
-        }),
+        }),*/
 
         new webpack.EnvironmentPlugin({
             NODE_ENV: isProd ? 'production' : 'development',
@@ -26,7 +25,7 @@ module.exports = function () {
 
         new webpack.NamedModulesPlugin(),
 
-        new HtmlWebpackPlugin(),
+        // new HtmlWebpackPlugin(),
     ];
 
     if (isProd) {
@@ -35,6 +34,10 @@ module.exports = function () {
                 minimize: true,
                 debug: false
             })
+        );
+
+        plugins.push(
+            new UglifyJsPlugin(),
         );
     }
 
@@ -104,11 +107,23 @@ module.exports = function () {
         devtool: isProd ? 'source-map' : 'eval',
         context: sourcePath,
         entry: {
-            js: ['./index.js']
+            js: ['./index.js'],
         },
         output: {
             path: staticsPath,
-            filename: 'index.js',
+            filename: 'chatflow.js',
+            libraryTarget: 'commonjs2',
+            library: 'ChatFlow',
+        },
+        externals: {
+            react: {
+                commonjs2: 'react',
+                window: 'React',
+            },
+            'react-dom': {
+                commonjs2: 'react-dom',
+                window: 'ReactDOM',
+            }
         },
         module: {
             rules: [

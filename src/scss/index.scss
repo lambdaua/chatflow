@@ -31,11 +31,24 @@ body {
       color: gray;
       cursor: pointer;
 
+      &, svg {
+        transition: 200ms;
+        transition-property: fill, color;
+      }
+
       svg {
         width: 75px;
         height: 75px;
         fill: gray;
         margin-bottom: 10px;
+      }
+
+      &:hover {
+        color: black;
+
+        svg {
+          fill: black;
+        }
       }
     }
 

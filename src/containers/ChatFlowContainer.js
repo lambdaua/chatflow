@@ -33,6 +33,7 @@ export default class ChatFlowContainer extends Component {
 
     componentDidMount() {
         this.props.onInit({
+            start: this.startChat,
             replay: this.replay,
         });
     }
@@ -52,6 +53,10 @@ export default class ChatFlowContainer extends Component {
     }
 
     replay = () => {
+        if (!this.state.isStarted) {
+            return this.startChat();
+        }
+
         clearTimeout(this.timeout);
         this.setState({
             messagesVisible: 0,

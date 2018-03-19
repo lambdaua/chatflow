@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ChatFlow from './containers/ChatFlowContainer';
+import ChatFlow from './containers/ChatFlowContainer.js';
 
 const messages = [
     {message: '- Conversation start -', from: 'system', delay: 0},
@@ -28,3 +28,5 @@ ReactDOM.render(
     />
     , root
 );
+
+export default ChatFlow;
