@@ -1,8 +1,9 @@
 {
-  "name": "chatflow",
+  "name": "chatflow1",
   "version": "1.0.0",
   "description": "",
   "main": "dist/chatflow.js",
+  "module": "src/index.js",
   "scripts": {
     "start": "npx webpack-dev-server --hot --debug --devtool source-map --inline",
     "build": "npx cross-env ENV=prod NODE_ENV=production webpack"
@@ -15,6 +16,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/kochetov_dd/chatflow#readme",
   "dependencies": {
+    "chatflow": "git+https://kochetov_dd@bitbucket.org/kochetov_dd/chatflow.git",
     "classnames": "^2.2.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

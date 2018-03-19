@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src');
 const staticsPath = path.join(__dirname, './dist');
@@ -112,15 +113,19 @@ module.exports = function () {
         output: {
             path: staticsPath,
             filename: 'chatflow.js',
-            libraryTarget: 'commonjs2',
+            libraryTarget: 'umd',
             library: 'ChatFlow',
         },
         externals: {
             react: {
+                umd: 'react',
+                commonjs: 'react',
                 commonjs2: 'react',
                 window: 'React',
             },
             'react-dom': {
+                umd: 'react-dom',
+                commonjs: 'react-dom',
                 commonjs2: 'react-dom',
                 window: 'ReactDOM',
             }

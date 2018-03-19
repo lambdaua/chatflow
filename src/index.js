@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ChatFlow from './containers/ChatFlowContainer.js';
+const ChatFlow = require('chatflow');
 
 const messages = [
     {message: '- Conversation start -', from: 'system', delay: 0},
@@ -18,7 +18,7 @@ const messages = [
     {message: "have a nice day!", from: "bot"},
 ];
 
-let root = document.createElement('div');
+/*let root = document.createElement('div');
 document.body.appendChild(root);
 
 ReactDOM.render(
@@ -27,6 +27,6 @@ ReactDOM.render(
         onInit={(e) => window.chatflow = e}
     />
     , root
-);
+);*/
 
 export default ChatFlow;
