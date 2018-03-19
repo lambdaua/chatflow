@@ -1,5 +1,5 @@
 {
-  "name": "chatflow1",
+  "name": "chatflow",
   "version": "1.0.0",
   "description": "",
   "main": "dist/chatflow.js",
@@ -16,7 +16,6 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/kochetov_dd/chatflow#readme",
   "dependencies": {
-    "chatflow": "git+https://kochetov_dd@bitbucket.org/kochetov_dd/chatflow.git",
     "classnames": "^2.2.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
