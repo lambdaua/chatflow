@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const ChatFlow = require('chatflow');
+import ChatFlow from './containers/ChatFlowContainer';
 
 const messages = [
     {message: '- Conversation start -', from: 'system', delay: 0},
