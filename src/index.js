@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ChatFlow from 'containers/ChatFlowContainer';
+import ChatFlow from './containers/ChatFlowContainer';
 
 const messages = [
     {message: '- Conversation start -', from: 'system', delay: 0},
@@ -18,15 +18,18 @@ const messages = [
     {message: "have a nice day!", from: "bot"},
 ];
 
-/*let root = document.createElement('div');
-document.body.appendChild(root);
+if (process.env.ENV === 'local') {
+    let root = document.createElement('div');
+    document.body.appendChild(root);
 
-ReactDOM.render(
-    <ChatFlow
-        messages={messages}
-        onInit={(e) => window.chatflow = e}
-    />
-    , root
-);*/
+    ReactDOM.render(
+        <ChatFlow
+            messages={messages}
+            onInit={(e) => window.chatflow = e}
+            autoPlay
+        />
+        , root
+    );
+}
 
 export default ChatFlow;

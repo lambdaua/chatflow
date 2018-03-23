@@ -25,9 +25,13 @@ module.exports = function () {
         }),
 
         new webpack.NamedModulesPlugin(),
-
-        // new HtmlWebpackPlugin(),
     ];
+
+    if (isLocal) {
+        plugins.push(
+            new HtmlWebpackPlugin(),
+        );
+    }
 
     if (isProd) {
         plugins.push(
@@ -104,19 +108,10 @@ module.exports = function () {
         },*/
     };
 
-    return {
-        devtool: isProd ? 'source-map' : 'eval',
-        context: sourcePath,
-        entry: {
-            js: ['./index.js'],
-        },
-        output: {
-            path: staticsPath,
-            filename: 'chatflow.js',
-            libraryTarget: 'umd',
-            library: 'ChatFlow',
-        },
-        externals: {
+    let externals = {};
+
+    if (isProd) {
+        externals = {
             react: {
                 umd: 'react',
                 commonjs: 'react',
@@ -129,7 +124,22 @@ module.exports = function () {
                 commonjs2: 'react-dom',
                 window: 'ReactDOM',
             }
+        };
+    }
+
+    return {
+        devtool: isProd ? 'source-map' : 'eval',
+        context: sourcePath,
+        entry: {
+            js: ['./index.js'],
         },
+        output: {
+            path: staticsPath,
+            filename: 'chatflow.js',
+            libraryTarget: 'umd',
+            library: 'ChatFlow',
+        },
+        externals,
         module: {
             rules: [
                 // hack to fix Lodash global exporting

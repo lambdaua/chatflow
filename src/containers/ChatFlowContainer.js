@@ -72,7 +72,7 @@ export default class ChatFlowContainer extends Component {
         this.chatflow = findDOMNode(e);
 
         if (this.props.autoPlay) {
-            this.createMessageTimeout(0);
+            this.replay();
         }
     };
 
