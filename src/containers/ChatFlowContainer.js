@@ -50,8 +50,8 @@ export default class ChatFlowContainer extends Component {
         }
 
         if (prevState.messagesVisible !== this.state.messagesVisible) {
-            if (this.state.messagesVisible < this.props.messages.length - 1) {
-                this.createMessageTimeout(this.state.messagesVisible + 1);
+            if (this.state.messagesVisible < this.props.messages.length) {
+                this.createMessageTimeout(this.state.messagesVisible);
             }
         }
     }
@@ -91,7 +91,6 @@ export default class ChatFlowContainer extends Component {
         let typingDuration = ('typingDuration' in message) ? message.typingDuration : this.props.typingDuration;
 
         const onMessageReady = () => {
-            console.log(this.state.messagesVisible);
             this.setTypingAnimation(message.from, false);
             this.setState({
                 messagesVisible: this.state.messagesVisible + 1,

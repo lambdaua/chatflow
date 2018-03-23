@@ -14,8 +14,6 @@ const messages = [
     {message: "+47-JOSH-PHONE", from: "user"},
     {message: "great, thanks a lot", from: "bot"},
     {message: "have a nice day!", from: "bot"},
-    {message: "have a nice day!", from: "bot"},
-    {message: "have a nice day!", from: "bot"},
 ];
 
 if (process.env.ENV === 'local') {
