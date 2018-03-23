@@ -1,9 +1,8 @@
 {
   "name": "chatflow",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/chatflow.js",
-  "module": "src/index.js",
   "scripts": {
     "start": "npx webpack-dev-server --hot --debug --devtool source-map --inline",
     "build": "npx cross-env ENV=prod NODE_ENV=production webpack"
