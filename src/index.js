@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import ChatFlow from './containers/ChatFlowContainer';
 
 const messages = [
-    {message: '- Conversation start -', from: 'system', delay: 0},
-    {message: "Josh, I need your email to register on our service", from: "bot", delay: 500, typingDuration: 1000},
+    {message: '- Conversation start -', from: 'system'},
+    {message: "Josh, I need your email to register on our service", from: "bot"},
     {message: "sure", from: "user"},
     {message: "josh@email.com", from: "user"},
     {message: "thx, Josh", from: "bot"},
@@ -25,8 +25,9 @@ if (process.env.ENV === 'local') {
     ReactDOM.render(
         <ChatFlow
             messages={messages}
-            onInit={(e) => window.chatflow = e}
             autoPlay
+            messageDelay={0}
+            typingDuration={0}
         />
         , root
     );

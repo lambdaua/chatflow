@@ -40,11 +40,19 @@ export default class ChatFlowContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.messagesVisible !== this.state.messagesVisible || prevState.typingAnimation !== this.state.typingAnimation) {
-            this.chatflow.scrollTop = this.chatflow.scrollHeight;
+            setTimeout(() => {
+                this.chatflow.scrollTop = this.chatflow.scrollHeight;
+            });
         }
 
         if (!prevState.isStarted && this.state.isStarted) {
             this.createMessageTimeout(0);
+        }
+
+        if (prevState.messagesVisible !== this.state.messagesVisible) {
+            if (this.state.messagesVisible < this.props.messages.length - 1) {
+                this.createMessageTimeout(this.state.messagesVisible + 1);
+            }
         }
     }
 
@@ -83,14 +91,11 @@ export default class ChatFlowContainer extends Component {
         let typingDuration = ('typingDuration' in message) ? message.typingDuration : this.props.typingDuration;
 
         const onMessageReady = () => {
+            console.log(this.state.messagesVisible);
             this.setTypingAnimation(message.from, false);
             this.setState({
                 messagesVisible: this.state.messagesVisible + 1,
             });
-
-            if (i < messages.length - 1) {
-                this.createMessageTimeout(i + 1);
-            }
         };
 
         if (!delay) {
