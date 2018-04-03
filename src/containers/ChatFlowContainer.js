@@ -13,6 +13,16 @@ const propTypes = {
     messageDelay: PropTypes.number,
     onInit: PropTypes.func,
     autoPlay: PropTypes.bool,
+    messageClassName: PropTypes.string,
+    leftMessageClassName: PropTypes.string,
+    rightMessageClassName: PropTypes.string,
+    systemMessageClassName: PropTypes.string,
+    messageTextClassName: PropTypes.string,
+    containerClassName: PropTypes.string,
+    messageAvatarClassName: PropTypes.string,
+    typingIndicatorClassName: PropTypes.string,
+    typingIndicatorInnerClassName: PropTypes.string,
+    startBtnClassName: PropTypes.string,
 };
 
 const defaultProps = {

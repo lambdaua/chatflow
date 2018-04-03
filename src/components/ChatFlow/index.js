@@ -17,6 +17,16 @@ const propTypes = {
     typingAnimation: PropTypes.object.isRequired,
     startChat: PropTypes.func.isRequired,
     isStarted: PropTypes.bool.isRequired,
+    messageClassName: PropTypes.string,
+    leftMessageClassName: PropTypes.string,
+    rightMessageClassName: PropTypes.string,
+    systemMessageClassName: PropTypes.string,
+    messageTextClassName: PropTypes.string,
+    containerClassName: PropTypes.string,
+    messageAvatarClassName: PropTypes.string,
+    typingIndicatorClassName: PropTypes.string,
+    typingIndicatorInnerClassName: PropTypes.string,
+    startBtnClassName: PropTypes.string,
 };
 
 export default class ChatFlow extends Component {
@@ -37,16 +47,26 @@ export default class ChatFlow extends Component {
         let nextMessage = messages[messagesVisible];
         messages = messages.slice(0, messagesVisible);
 
+        let containerClassName = classNames(classList['chatflow'], this.props.containerClassName);
+        let startBtnClassName = classNames(classList['chatflow__start-btn'], this.props.startBtnClassName);
+        let messageClassName = classNames(classList['chatflow__message'], this.props.messageClassName);
+        let leftMessageClassName = classNames(classList['message--left'], this.props.leftMessageClassName);
+        let rightMessageClassName = classNames(classList['message--right'], this.props.rightMessageClassName);
+        let systemMessageClassName = classNames(classList['message--system'], this.props.systemMessageClassName);
+        let messageTextClassName = classNames(classList['message__text'], this.props.messageTextClassName);
+        let messageAvatarClassName = classNames(classList['message__avatar'], this.props.messageAvatarClassName);
+        let typingIndicatorClassName = classNames(classList['message__typing-indicator'], this.props.typingIndicatorClassName);
+
         if (!isStarted) {
             return (
                 <div
-                    className={classList['chatflow']}
+                    className={containerClassName}
                     style={{
                         width,
                         height,
                     }}>
                     <div
-                        className={classList['chatflow__start-btn']}
+                        className={startBtnClassName}
                         onClick={this.props.startChat}>
                         <PlayIcon/>
                         Run demo
@@ -57,7 +77,7 @@ export default class ChatFlow extends Component {
 
         return (
             <div
-                className={classList['chatflow']}
+                className={containerClassName}
                 style={{
                     width,
                     height,
@@ -65,37 +85,40 @@ export default class ChatFlow extends Component {
                 {messages.map((message, i) => (
                     <div
                         key={i}
-                        className={classNames(classList['chatflow__message'], {
-                            [classList['message--left']]: message.from === 'bot',
-                            [classList['message--right']]: message.from === 'user',
-                            [classList['message--system']]: message.from === 'system',
+                        className={classNames(messageClassName, {
+                            [leftMessageClassName]: message.from === 'bot',
+                            [rightMessageClassName]: message.from === 'user',
+                            [systemMessageClassName]: message.from === 'system',
                         })}>
                         {message.from !== 'system' && (
-                            <div className={classList['message__avatar']}>
+                            <div className={messageAvatarClassName}>
                                 <img
                                     src={this.getAvatar(message)}
                                 />
                             </div>
                         )}
-                        <div className={classList['message__text']}>
+                        <div className={messageTextClassName}>
                             {message.message}
                         </div>
                     </div>
                 ))}
 
                 {!!nextMessage && nextMessage.from !== 'system' && !!typingAnimation[nextMessage.from] && (
-                    <div className={classNames(classList['chatflow__message'], {
-                        [classList['message--left']]: nextMessage.from === 'bot',
-                        [classList['message--right']]: nextMessage.from === 'user',
-                        [classList['message--system']]: nextMessage.from === 'system',
+                    <div className={classNames(messageClassName, {
+                        [leftMessageClassName]: nextMessage.from === 'bot',
+                        [rightMessageClassName]: nextMessage.from === 'user',
+                        [systemMessageClassName]: nextMessage.from === 'system',
                     })}>
-                        <div className={classList['message__avatar']}>
+                        <div className={messageAvatarClassName}>
                             <img
                                 src={this.getAvatar(nextMessage)}
                             />
                         </div>
-                        <div className={classList['message__typing-indicator']}>
-                            <TypingIndicator from={nextMessage.from}/>
+                        <div className={typingIndicatorClassName}>
+                            <TypingIndicator
+                                from={nextMessage.from}
+                                className={this.props.typingIndicatorInnerClassName}
+                            />
                         </div>
                     </div>
                 )}
