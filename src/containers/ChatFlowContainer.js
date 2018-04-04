@@ -152,6 +152,16 @@ export default class ChatFlowContainer extends Component {
                 typingAnimation={typingAnimation}
                 startChat={this.startChat}
                 isStarted={isStarted}
+                messageClassName={this.props.messageClassName}
+                leftMessageClassName={this.props.leftMessageClassName}
+                rightMessageClassName={this.props.rightMessageClassName}
+                systemMessageClassName={this.props.systemMessageClassName}
+                messageTextClassName={this.props.messageTextClassName}
+                containerClassName={this.props.containerClassName}
+                messageAvatarClassName={this.props.messageAvatarClassName}
+                typingIndicatorClassName={this.props.typingIndicatorClassName}
+                typingIndicatorInnerClassName={this.props.typingIndicatorInnerClassName}
+                startBtnClassName={this.props.startBtnClassName}
             />
         )
     }
