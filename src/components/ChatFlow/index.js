@@ -11,8 +11,8 @@ import classList from '../../scss/index.scss';
 
 const propTypes = {
     messages: PropTypes.arrayOf(MessageType),
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     messagesVisible: PropTypes.number.isRequired,
     typingAnimation: PropTypes.object.isRequired,
     startChat: PropTypes.func.isRequired,
