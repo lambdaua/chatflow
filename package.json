@@ -5,7 +5,11 @@
   "main": "dist/chatflow.js",
   "scripts": {
     "start": "npx cross-env __REACT_CHATFLOW_TEST=1 npx webpack-dev-server --hot --debug --devtool source-map --inline",
-    "build": "npx cross-env ENV=prod NODE_ENV=production webpack"
+    "build": "npx cross-env ENV=prod NODE_ENV=production webpack",
+    "publish-patch": "npm version patch && npm publish",
+    "publish-minor": "npm version minor && npm publish",
+    "publish-major": "npm version major && npm publish",
+    "publish": "npm run publish-patch"
   },
   "husky": {
     "hooks": {
@@ -14,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/kochetov_dd/chatflow.git"
+    "url": "git+ssh://git@github.com:lambdaua/react-chatflow.git"
   },
-  "author": "Danil Kochetov <danil.kochetov@gmail.com>",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/kochetov_dd/chatflow#readme",
+  "author": "Danil Kochetov <dankochetov13@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/lambdaua/react-chatflow#readme",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^16.2.0",
