@@ -1,4 +1,6 @@
 # React Chatflow
+[![npm version](https://img.shields.io/npm/v/react-chatflow.svg?style=flat)](https://www.npmjs.com/package/react-chatflow)
+
 [React](https://github.com/facebook/react) library that helps you to emulate a simple chatflow between a real user and a bot.
 
 ## Installation
