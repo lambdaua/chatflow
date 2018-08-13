@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/chatflow.js",
   "scripts": {
-    "start": "npx webpack-dev-server --hot --debug --devtool source-map --inline",
+    "start": "npx cross-env __REACT_CHATFLOW_TEST=1 npx webpack-dev-server --hot --debug --devtool source-map --inline",
     "build": "npx cross-env ENV=prod NODE_ENV=production webpack"
   },
   "repository": {

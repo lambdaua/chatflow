@@ -21,7 +21,8 @@ module.exports = function () {
 
         new webpack.EnvironmentPlugin({
             NODE_ENV: isProd ? 'production' : 'development',
-            ENV: ENV
+            ENV: ENV,
+            __REACT_CHATFLOW_TEST: process.env.__REACT_CHATFLOW_TEST,
         }),
 
         new webpack.NamedModulesPlugin(),

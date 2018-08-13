@@ -16,7 +16,7 @@ const messages = [
     {message: "have a nice day!", from: "bot"},
 ];
 
-if (process.env.ENV === 'local') {
+if (process.env.__REACT_CHATFLOW_TEST) {
     let root = document.createElement('div');
     document.body.appendChild(root);
 
