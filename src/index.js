@@ -23,9 +23,6 @@ if (process.env.__REACT_CHATFLOW_TEST) {
     ReactDOM.render(
         <ChatFlow
             messages={messages}
-            autoPlay
-            messageDelay={0}
-            typingDuration={0}
         />
         , root
     );
